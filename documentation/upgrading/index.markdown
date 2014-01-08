@@ -8,6 +8,17 @@ layout: default
 
 
   If you deploy Rails, you wil also need `capistrano-rails` and `capistrano-bundler` gems (Rails and Bundler integrations were moved out from Capistrano 3.x).
+  {% highlight ruby %}
+    gem 'capistrano-rails',   '~> 1.1', require: false, group: :development
+    gem 'capistrano-bundler', '~> 1.1', require: false, group: :development
+  {% endhighlight %}
+
+  You can add idiomatic support for your preffered ruby version manager: rvm, rbenv, chruby.
+  {% highlight ruby %}
+    gem 'capistrano-rvm',   '~> 0.1', require: false, group: :development
+    gem 'capistrano-rbenv', '~> 2.0', require: false, group: :development
+    gem 'capistrano-chruby', github: 'capistrano/chruby', require: false, group: :development
+  {% endhighlight %}
 
 2.
   We recommend to capify the project from scratch and move definitions from old to new configs then.
@@ -62,6 +73,11 @@ layout: default
 
 8.
   Keep editing Capfile and uncomment addons you need, such as rbenv/rvm, bundler or rails.
+  {% highlight ruby %}
+    require 'capistrano/rails'
+    require 'capistrano/bundler'
+    require 'capistrano/rbenv'
+  {% endhighlight %}
 
 9.
   Yay! Try to deploy with your new config set. If you discover any missing info in this upgrade guide, you're welcome to contribute to it.
